@@ -34,8 +34,9 @@ puts '---- 5 users ---'
 
 10.times do |i|
   Event.create!(
-    start_date: Faker::Date.between(from: 30.days.ago, to: Faker::Date.forward(days: 60)),
-    duration: rand(1..60),
+    # start_date: Faker::Date.between(from: 30.days.ago, to: Faker::Date.forward(days: 60)),
+    start_date: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now + 30, format: :short),
+    duration: rand(1..60)*5,
     title: Faker::Lorem.paragraph(sentence_count: rand(1..2)),
     description: Faker::Lorem.paragraph(sentence_count: rand(6..20)),
     price: rand(1..1000),
@@ -45,7 +46,7 @@ puts '---- 5 users ---'
 end
   puts '---- 10 events ---'
 
-30.times do |i|
+20.times do |i|
   e = Event.all.sample
   u = User.all.sample unless u == e.admin_user
   Attendance.create!(

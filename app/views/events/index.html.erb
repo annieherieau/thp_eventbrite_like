@@ -2,5 +2,16 @@
 <p>Find me in app/views/event/index.html.erb</p>
 
 <% @events.each do |event|%>
-  <%= event.title %>
+  <div>
+    <hr>
+    <p>id: <%= event.id %></p>
+    <p>title: <%= event.title %></p>
+    <p>start_date: <%= event.start_date %></p>
+    <p>duration: <%= event.duration %> minutes</p>
+    <p>description: <%= event.description %></p>
+    <p>price: <%= event.price %> €</p>
+    <p>location: <%= event.location %></p>
+    <p>admin_user: <%= event.admin_user_id %></p>
+  </div>
+  <hr>
 <% end %>

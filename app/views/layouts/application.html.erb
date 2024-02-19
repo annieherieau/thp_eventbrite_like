@@ -13,7 +13,11 @@
   <body data-turbo="false">
   <header>
     <nav>
-      <%= link_to 'aacueil', root_path%>
+      <%= link_to 'accueil', root_path%> 
+      <%= link_to 'Créer un evenement', root_path%>
+      <%= link_to 'inscription', new_user_path%> 
+      <%= link_to 'connexion', root_path%>
+      <%= link_to 'Mon Profil', user_path%>
     </nav>
   </header>
     <%= yield %>
