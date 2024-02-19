@@ -22,7 +22,7 @@ end
 puts '---- reset tables ---'
 
 10.times do |i|
-  User.create(
+  User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Lorem.unique.characters(number: rand(4..10))+"@yopmail.com",
@@ -30,3 +30,26 @@ puts '---- reset tables ---'
   )
 end
 puts '---- 10 users ---'
+
+10.times do |i|
+  Event.create!(
+    start_date: Faker::Date.between(from: 30.days.ago, to: Faker::Date.forward(days: 60)),
+    duration: rand(1..60),
+    title: Faker::Lorem.paragraph(sentence_count: rand(1..2)),
+    description: Faker::Lorem.paragraph(sentence_count: rand(6..20)),
+    price: rand(1..1000),
+    location: Faker::Address.city,
+    admin_user: User.all.sample
+  )
+end
+  puts '---- 10 events ---'
+
+30.times do |i|
+  e = Event.all.sample
+  u = User.all.sample unless u == e.admin_user
+  Attendance.create!(
+    event: e,
+    user: u,
+  )
+end
+puts '---- 30 attendances ---'
