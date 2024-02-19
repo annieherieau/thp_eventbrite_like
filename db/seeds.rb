@@ -26,7 +26,7 @@ puts '---- reset tables ---'
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: "user#{(i+1).to_s.rjust(2,'0')}@annieherieau.fr",
-    # email: "bbuser#{(i+1).to_s.rjust(2,'0')}@yopmail.com",
+    password: "Azerty1&",
     description: Faker::Lorem.paragraph(sentence_count: rand(2..5))
   )
 end

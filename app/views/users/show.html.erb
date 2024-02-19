@@ -1,0 +1,13 @@
+<h1>User#show</h1>
+<p>Find me in app/views/user/profile.html.erb</p>
+
+<!-- @User Data -->
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><strong>Identifiant : </strong><%= @user.id %></li>
+    <li class="list-group-item"><strong>Prénom : </strong><%= @user.first_name %></li>
+    <li class="list-group-item"><strong>Nom : </strong><%= @user.last_name %></li>
+    <li class="list-group-item"><strong>Email : </strong><%= @user.email %></li>
+    <li class="list-group-item"><strong>Description : </strong><%= @user.description %></li>
+    <li class="list-group-item"><strong>Nombre de Admin_events : </strong><%= @admin_events.length %> </li>
+    <li class="list-group-item"><strong>Nombre de Events : </strong><%= @events.length %> </li>
+  </ul>

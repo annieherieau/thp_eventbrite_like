@@ -1,2 +1,40 @@
 <h1>Sessions#new</h1>
 <p>Find me in app/views/sessions/new.html.erb</p>
+
+<%# ALERTE FORMULAIRE %>
+      <% if @user && @user.errors.any? %>
+        <p>Nous n'avons pas réussi à créer ton compte pour la (ou les) raison(s) suivante(s) :</p>
+        <% @user.errors.full_messages.each do |message| %>
+          <p class="alert alert-danger" role="alert"><%= message %></p>
+        <% end %>
+      <% end %>
+
+
+      <%# FORMULAIRE %>
+      <%= form_with url: sessions_path, action: 'create', method: "post"  do |f| %>
+        <div class= "form-group required">
+          <%# email %>
+          <% @user.email ? u_email = @user.email : u_email= '' %>
+          <%= f.label :email, "Email", class: "form-label"%>
+          <%= f.email_field :email, required: true, class: 'form-control', value: u_email %>
+
+          
+          <%# password %>
+          <%= f.label :input_pwd, "Mot de passe", class: "form-label"%>
+          <%= f.password_field :input_pwd, required: true, class: 'form-control' %>
+       
+          
+          <%# Remember cookie %>
+           <br>
+           <div class='form-check'>
+            <%= f.check_box :remember_check, class: "form-check-input" %>
+            <%=f.label :remember_check, "Se souvenir de moi", class: "form-check-label" %>
+          </div>
+          <br>
+        </div>
+        <%# Boutons %>
+        <div class="text-right">
+          <%# Submit %>
+          <%= f.submit value: "Valider", class: "btn btn-primary" %>
+        </div>
+      <% end %>
