@@ -42,7 +42,7 @@ class User < ApplicationRecord
   end
 
   def authenticate(password)
-    @password == password
+    self.password == password
   end
 
   def remember(remember_token)

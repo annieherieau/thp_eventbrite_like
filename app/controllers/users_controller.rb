@@ -3,7 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params['id'])
-    @admin_events = @user.admin_events
+    @admin_events = Event.where(admin_user_id: @user.id)
+    @user.admin_events
     @events = @user.events
   end
 

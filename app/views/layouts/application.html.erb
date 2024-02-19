@@ -14,10 +14,13 @@
   <header>
     <nav>
       <%= link_to 'accueil', root_path%> 
-      <%= link_to 'Créer un evenement', root_path%>
+      <%= link_to 'Créer un evenement', new_event_path%>
       <%= link_to 'inscription', new_user_path%> 
-      <%= link_to 'connexion', root_path%>
-      <%= link_to 'Mon Profil', user_path%>
+      <%= link_to 'connexion', new_session_path%>
+      <% if logged_in? %>
+        <%= link_to 'Déconnexion', session_path(current_user.id), method: :delete, class: "nav-link active"%>
+        <%= link_to 'Mon Profil', user_path(id: current_user.id)%>
+      <% end %>
     </nav>
   </header>
     <%= yield %>

@@ -8,6 +8,23 @@
     <li class="list-group-item"><strong>Nom : </strong><%= @user.last_name %></li>
     <li class="list-group-item"><strong>Email : </strong><%= @user.email %></li>
     <li class="list-group-item"><strong>Description : </strong><%= @user.description %></li>
-    <li class="list-group-item"><strong>Nombre de Admin_events : </strong><%= @admin_events.length %> </li>
+    <li class="list-group-item"><strong>Nombre de Admin Events : </strong><%= @admin_events.length %> </li>
     <li class="list-group-item"><strong>Nombre de Events : </strong><%= @events.length %> </li>
   </ul>
+
+  <% if @admin_events %>
+  <h2>Le évents que tu administre</h2>
+    <% @admin_events.each do |event| %>
+      <%= link_to event.title, event_path(event.id)%>
+      <br>
+    <% end %>
+  <% end %>
+
+   <% if @events %>
+  <h2>Le évents auxquels tu participe</h2>
+    <% @events.each do |event| %>
+      <%= link_to event.title, event_path(event.id)%>
+      <br>
+    <% end %>
+  <% end %>
+  

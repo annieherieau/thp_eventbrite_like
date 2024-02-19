@@ -48,7 +48,10 @@ end
 
 20.times do |i|
   e = Event.all.sample
-  u = User.all.sample unless u == e.admin_user
+  u = User.all.sample
+  while u == e.admin_user || Attendance.where(event_id: e.id, user_id:u.id).length>0
+    u = User.all.sample
+  end
   Attendance.create!(
     event: e,
     user: u,
