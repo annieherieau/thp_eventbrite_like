@@ -56,6 +56,7 @@ group :development do
   gem 'letter_opener'
   gem "table_print", "~> 1.5"
   gem "faker", "~> 3.2", :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
+  gem "better_errors", "~> 2.10"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
